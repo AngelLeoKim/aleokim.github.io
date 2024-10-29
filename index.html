@@ -89,7 +89,7 @@
     <main class="main">
       <!-- Hero Section -->
       <section id="hero" class="hero section light-background">
-        <img src="assets/img/bg-pic.jpg" alt="" />
+        <img src="assets/img/bg-pic.jpg" alt="Responsive Image" />
 
         <div class="container" data-aos="zoom-out">
           <div class="row justify-content-center">
@@ -725,7 +725,7 @@
         <div class="container" data-aos="fade" data-aos-delay="100">
           <div class="row gy-4">
             <div
-              class="col-lg-2 contact__container container grid justify-content-center"
+              class="col-lg-2 contact__container container grid justify-content-center col-lg-10"
             >
               <form
                 action=""
@@ -735,7 +735,7 @@
                 data-aos-delay="200"
               >
                 <div class="row gy-4 contact__group grid">
-                  <div class="col-md-6">
+                  <div class="col-md-6 mb-0">
                     <input
                       type="text"
                       name="user_name"
@@ -745,7 +745,7 @@
                     />
                   </div>
 
-                  <div class="col-md-6">
+                  <div class="col-md-6 mb-0">
                     <input
                       type="email"
                       class="contact__input"
@@ -755,7 +755,7 @@
                     />
                   </div>
 
-                  <div class="col-md-12 d-grid gap-2 col-6 mx-auto">
+                  <div class="col-md-12 d-grid gap-2 col-md-6 mb-0">
                     <textarea
                       class="contact__input contact__area"
                       placeholder="Message"
@@ -771,6 +771,8 @@
                   >
                     Send Message
                   </button>
+
+                  <p class="contact__message" id="contact-message"></p>
                 </div>
               </form>
             </div>
@@ -790,7 +792,38 @@
     ></a>
 
     <!-- Preloader -->
-    <div id="preloader"></div>
+    <div id="preloader">
+      <div class="p">LOADING</div>
+    </div>
+
+    <script>
+      paceOptions = {
+        ajax: true,
+        document: true,
+        eventLag: false,
+      };
+
+      Pace.on("done", function () {
+        $(".p")
+          .delay(500)
+          .animate(
+            { top: "30%", opacity: "0" },
+            3000,
+            $.bez([0.19, 1, 0.22, 1])
+          );
+
+        $("#preloader")
+          .delay(1500)
+          .animate({ top: "-100%" }, 2000, $.bez([0.19, 1, 0.22, 1]));
+
+        TweenMax.from(".title", 2, {
+          delay: 1.8,
+          y: 10,
+          opacity: 0,
+          ease: Expo.easeInOut,
+        });
+      });
+    </script>
 
     <!-- Boxicons-->
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
